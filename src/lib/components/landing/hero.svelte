@@ -4,7 +4,7 @@
 	import Input from '../ui/input/input.svelte';
 </script>
 
-<div class="flex min-h-screen w-full items-center justify-between px-5">
+<div class="flex min-h-screen w-full items-center justify-between bg-primary px-5">
 	<div class="hidden h-full lg:block">
 		<img src="/landing.png" alt="landing " class="aspect-square h-[550px]" />
 	</div>
@@ -22,10 +22,10 @@
 			</div>
 		</div>
 		<div class="flex gap-3">
-			<Button variant="default" size="lg" class="h-14 text-base"
+			<Button variant="outline" size="lg" class="h-14 text-base"
 				>Start exploring <Telescope /></Button
 			>
-			<Button variant="outline" class="h-14 text-base">Browse collection</Button>
+			<Button variant="ghost" class="h-14 text-base">Browse collection</Button>
 		</div>
 	</div>
 </div>

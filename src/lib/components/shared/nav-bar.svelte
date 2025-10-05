@@ -12,7 +12,8 @@
 	];
 </script>
 
-<div class="sticky mx-auto mb-3 flex max-w-7xl items-center justify-between pt-7">
+<div class="bg-primary">
+<div class="sticky mx-auto pb-3 flex max-w-7xl items-center justify-between pt-7">
 	<div><p class="text-3xl font-bold">Alem Guzo</p></div>
 	<div class="hidden lg:flex">
 		<nav class="flex gap-5">
@@ -28,7 +29,7 @@
 		</nav>
 	</div>
 	<div>
-		<Button variant="ghost" size="lg"><User class="h-10 w-10" size={30} /></Button>
-		<ModeToggle />
+		<Button variant="ghost" size="lg" class='text-lg'><User class="h-10 w-10" size={30} /> Login</Button>
 	</div>
+</div>
 </div>
