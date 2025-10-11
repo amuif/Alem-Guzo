@@ -5,8 +5,8 @@
 	import Button from '../ui/button/button.svelte';
 	let links = [
 		{ name: 'Home', href: '/' },
+		{ name: 'Features', href: '#features' },
 		{ name: 'About', href: '#about' },
-		{ name: 'Services', href: '#services' },
 		{ name: 'Contact', href: '#contact' }
 	];
 </script>

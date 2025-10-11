@@ -1,10 +1,10 @@
 <script>
-	import About from '$lib/components/landing/about.svelte';
+	import Feature from '$lib/components/landing/feature.svelte';
 	import Hero from '$lib/components/landing/hero.svelte';
 </script>
 
 <Hero />
-<About />
+<Feature/>
 
 <style>
 </style>
