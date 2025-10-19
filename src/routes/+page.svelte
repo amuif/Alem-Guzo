@@ -4,7 +4,7 @@
 </script>
 
 <Hero />
-<Feature/>
+<Feature />
 
 <style>
 </style>

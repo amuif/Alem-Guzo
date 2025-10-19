@@ -1,29 +1,38 @@
-<script>
-	import { LibraryBig} from "@lucide/svelte";
+<script lang="ts">
+	import type { FeatureCard } from '../../../types/features';
 
+	const categories: FeatureCard[] = [
+		{
+			id: 1,
+			title: 'Fiction & Non-fiction',
+			image: '/fiction.jpg'
+		},
+		{
+			id: 2,
+			title: 'Fantasy',
+			image: '/fantasy.jpg'
+		},
+		{
+			id: 3,
+			title: 'Mystery',
+			image: '/mystery.jpg'
+		},
+		{
+			id: 4,
+			title: 'Romance',
+			image: '/romance.jpg'
+		}
+	];
 </script>
 
-<div class="bg-primary text-black pb-5" id="about">
-	<div class="mx-auto min-h-[80dvh]  p-7 w-full flex-col bg-white  py-10 md:max-w-7xl rounded-3xl shadow-xl/30">
-		<div class="grid grid-cols-1 md:grid-cols-2">
-			<div class=" text-3xl font-bold lg:text-5xl">
-				<p class="text-left">
-					About<br /> Alem Guzo
-				</p>
+<section class="flex-col space-y-5 bg-primary p-5">
+	<h2 class="text-lg font-bold lg:text-2xl">Featured Categories</h2>
+	<div class="grid grid-cols-1 justify-between space-x-5 md:grid-cols-2 lg:grid-cols-4">
+		{#each categories as { id, image, title } (id)}
+			<div class="relative flex-col space-y-4">
+				<img src={image} alt={title} class="aspect-square h-72 rounded-lg object-cover" />
+				<h6 class="absolute bottom-9 left-3 font-extrabold">{title}</h6>
 			</div>
-			<p class="text-lg">
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptatem quidem dolores,
-				iusto magnam ipsam autem illo, at et amet libero voluptates, aliquid architecto deleniti
-				aperiam similique saepe itaque provident?
-			</p>
-		</div>
-		<div class="grid grid-cols-1 lg:grid-cols-3 gap-3 pt-5 lg:pt-10  bg-blue-500 mt-auto">
-      <div>
-        <LibraryBig class='h-16 w-16 text-primary'/>
-        <h1>Massive Book Library</h1>
-      </div>
-      <div></div>
-      <div></div>
-		</div>
+		{/each}
 	</div>
-</div>
+</section>
