@@ -25,12 +25,14 @@
 	];
 </script>
 
-<section class="flex-col space-y-5 bg-primary p-5">
+<section class="min-h-[80dvh] flex-col space-y-5 p-5">
 	<h2 class="text-lg font-bold lg:text-2xl">Featured Categories</h2>
-	<div class="grid grid-cols-1 justify-between space-x-5 md:grid-cols-2 lg:grid-cols-4">
+	<div
+		class="grid grid-cols-1 justify-between space-x-5 pt-5 md:grid-cols-2 lg:grid-cols-4 lg:pt-10"
+	>
 		{#each categories as { id, image, title } (id)}
 			<div class="relative flex-col space-y-4">
-				<img src={image} alt={title} class="aspect-square h-72 rounded-lg object-cover" />
+				<img src={image} alt={title} class="aspect-square h-80 rounded-lg object-cover" />
 				<h6 class="absolute bottom-9 left-3 font-extrabold">{title}</h6>
 			</div>
 		{/each}

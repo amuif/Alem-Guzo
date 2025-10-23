@@ -4,7 +4,7 @@
 	import Input from '../ui/input/input.svelte';
 </script>
 
-<div class="flex min-h-screen w-full items-center justify-between bg-primary px-5">
+<div class="flex min-h-screen w-full items-center justify-between px-5">
 	<div class="hidden h-full lg:block">
 		<img src="/landing.png" alt="landing " class="aspect-square h-[550px]" />
 	</div>

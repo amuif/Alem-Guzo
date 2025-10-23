@@ -11,7 +11,7 @@
 	];
 </script>
 
-<div class="bg-primary">
+<div class="">
 	<div class="sticky mx-auto flex max-w-7xl items-center justify-between pt-7 pb-3">
 		<div><p class="text-3xl font-bold">Alem Guzo</p></div>
 		<div class="hidden lg:flex">
