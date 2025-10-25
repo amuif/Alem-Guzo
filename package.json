@@ -30,7 +30,7 @@
 		"@types/node": "^22",
 		"bits-ui": "^2.11.0",
 		"clsx": "^2.1.1",
-		"drizzle-kit": "^0.31.4",
+		"drizzle-kit": "^0.31.5",
 		"drizzle-orm": "^0.44.5",
 		"eslint": "^9.36.0",
 		"eslint-config-prettier": "^10.1.8",
@@ -52,7 +52,6 @@
 	"dependencies": {
 		"@lucide/svelte": "^0.544.0",
 		"@neondatabase/serverless": "^1.0.1",
-		"better-auth": "^1.3.31",
 		"husky": "^9.1.7",
 		"mode-watcher": "^1.1.0"
 	}
