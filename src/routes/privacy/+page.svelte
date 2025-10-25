@@ -3,9 +3,7 @@
 </script>
 
 <section class="min-h-[80vh] px-6 py-16 lg:px-12">
-	<div
-		class="mx-auto max-w-4xl space-y-12 rounded-2xl bg-neutral-50 p-8 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100"
-	>
+	<div class="mx-auto max-w-4xl space-y-12 rounded-2xl p-8 text-neutral-900 dark:text-neutral-100">
 		<h1 class="text-center text-3xl font-bold lg:text-5xl">Privacy Policy</h1>
 
 		<div class="space-y-6">
@@ -62,7 +60,7 @@
 					class="rounded-full bg-neutral-900 px-6 py-3 text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
 					onclick={() => window.history.back()}
 				>
-					Back to Home
+					Go Back
 				</Button>
 			</div>
 		</div>

@@ -63,8 +63,10 @@
 		<div class="hidden items-center gap-2 lg:flex">
 			<ModeToggle />
 			<Button variant="ghost" size="lg" class="text-base">
-				<User class="h-5 w-5" />
-				Login
+				<a href="/login" class="flex items-center gap-1">
+					<User class="h-5 w-5" />
+					Login</a
+				>
 			</Button>
 		</div>
 	</div>
@@ -74,9 +76,12 @@
 			class="mt-3 flex items-center justify-center gap-4 border-t border-neutral-200 pt-4 lg:hidden dark:border-neutral-700"
 		>
 			<ModeToggle />
+
 			<Button variant="ghost" size="lg" class="text-base">
-				<User class="h-5 w-5" />
-				Login
+				<a href="/login" class="flex items-center gap-1">
+					<User class="h-5 w-5" />
+					Login</a
+				>
 			</Button>
 		</div>
 	{/if}
