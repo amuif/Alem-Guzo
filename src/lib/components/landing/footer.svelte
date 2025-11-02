@@ -2,6 +2,7 @@
 	import { Facebook, Twitter, Instagram, Github, Mail } from '@lucide/svelte';
 	import { Button } from '../ui/button';
 </script>
+
 <footer
 	class="w-full border-t border-neutral-200 bg-neutral-50 px-6 py-16 text-neutral-800 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-200"
 >

@@ -5,6 +5,9 @@
 	import * as Field from '$lib/components/ui/field/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import type { HTMLAttributes } from 'svelte/elements';
+	import { LoaderCircle } from '@lucide/svelte';
+	import { toast } from 'svelte-sonner';
+	import type { User } from '../../types/user';
 </script>
 
 <script lang="ts">
@@ -13,9 +16,11 @@
 	let email = $state('');
 	let password = $state('');
 	let confirmPassword = $state('');
-	async function handleSignin(event: Event) {
+	let loading = $state(false);
+	async function handleSignUp(event: Event) {
 		event.preventDefault();
-	try {
+		loading = true;
+		try {
 			const response = await fetch('/api/signup', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -24,9 +29,17 @@
 			if (!response.ok) {
 				console.log('Error creating user');
 			}
-			const data = response.json();
-			console.log(data);
+			const resp: { success: boolean; data: User } = await response.json();
+			console.log(resp);
+			if (resp.success) {
+				toast.success(`Welcome ${resp.data.name} to Alem Guzo`);
+			}
+			fullName = '';
+			email = '';
+			password = '';
+			confirmPassword = '';
 		} catch (error) {
+			toast.error('Error creating user');
 			console.log('Error at creating user', error);
 		} finally {
 			loading = false;
@@ -35,7 +48,7 @@
 </script>
 
 <div class={cn('flex flex-col gap-6', className)} {...restProps}>
-	<form onsubmit={handleSignin}>
+	<form onsubmit={handleSignUp}>
 		<Field.Group>
 			<div class="flex flex-col items-center gap-2 text-center">
 				<a href="/" class="flex flex-col items-center gap-2 font-medium">
@@ -96,8 +109,18 @@
 				</div>
 			</div>
 			<Field.Field>
-				<Button type="submit">Create Account</Button>
+				<Button type="submit" disabled={loading}>
+					{#if loading}
+						<p class="flex items-center gap-2">
+							Signing...
+							<LoaderCircle class="animate-spin" />
+						</p>
+					{:else}
+						<span>Create Account</span>
+					{/if}
+				</Button>
 			</Field.Field>
+
 			<Field.Separator>Or</Field.Separator>
 			<Field.Field class="grid gap-4 ">
 				<Button variant="outline" type="button">

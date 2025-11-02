@@ -3,6 +3,7 @@
 	import Button from '../ui/button/button.svelte';
 	import Input from '../ui/input/input.svelte';
 </script>
+
 <section
 	id="hero"
 	class="flex min-h-screen w-full flex-col-reverse items-center justify-center gap-10 px-5 py-10 lg:flex-row lg:justify-between lg:px-12"
