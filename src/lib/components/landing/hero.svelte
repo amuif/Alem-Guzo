@@ -3,13 +3,11 @@
 	import Button from '../ui/button/button.svelte';
 	import Input from '../ui/input/input.svelte';
 </script>
-
 <section
 	id="hero"
 	class="flex min-h-screen w-full flex-col-reverse items-center justify-center gap-10 px-5 py-10 lg:flex-row lg:justify-between lg:px-12"
 >
 	<div class="flex flex-col space-y-8 text-center lg:w-1/2 lg:text-left">
-		<!-- Search -->
 		<div class="mx-auto w-full max-w-md lg:mx-0">
 			<Input
 				placeholder="Search for books..."
@@ -17,7 +15,6 @@
 			/>
 		</div>
 
-		<!-- Headline -->
 		<div class="flex flex-col space-y-3">
 			<h1
 				class="text-3xl leading-tight font-semibold tracking-tight text-neutral-900 md:text-4xl lg:text-5xl dark:text-neutral-100"

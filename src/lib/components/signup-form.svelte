@@ -1,47 +1,105 @@
-<script lang="ts">
+<script lang="ts" module>
 	import GalleryVerticalEndIcon from '@lucide/svelte/icons/gallery-vertical-end';
 	import { cn } from '$lib/utils.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Field from '$lib/components/ui/field/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import type { HTMLAttributes } from 'svelte/elements';
+</script>
 
+<script lang="ts">
 	let { class: className, ...restProps }: HTMLAttributes<HTMLDivElement> = $props();
+	let fullName = $state('');
+	let email = $state('');
+	let password = $state('');
+	let confirmPassword = $state('');
+	async function handleSignin(event: Event) {
+		event.preventDefault();
+	try {
+			const response = await fetch('/api/signup', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ fullName, email, password, confirmPassword })
+			});
+			if (!response.ok) {
+				console.log('Error creating user');
+			}
+			const data = response.json();
+			console.log(data);
+		} catch (error) {
+			console.log('Error at creating user', error);
+		} finally {
+			loading = false;
+		}
+	}
 </script>
 
 <div class={cn('flex flex-col gap-6', className)} {...restProps}>
-	<form>
+	<form onsubmit={handleSignin}>
 		<Field.Group>
 			<div class="flex flex-col items-center gap-2 text-center">
-				<a href="#/" class="flex flex-col items-center gap-2 font-medium">
+				<a href="/" class="flex flex-col items-center gap-2 font-medium">
 					<div class="flex size-8 items-center justify-center rounded-md">
 						<GalleryVerticalEndIcon class="size-6" />
 					</div>
-					<span class="sr-only">Acme Inc.</span>
+					<span class="sr-only">Alem Guzo.</span>
 				</a>
-				<h1 class="text-xl font-bold">Welcome to Acme Inc.</h1>
+				<h1 class="text-xl font-bold">Welcome to Alem Guzo.</h1>
 				<Field.Description>
-					Already have an account? <a href="#/">Sign in</a>
+					Already have an account? <a class="px-1" href="/login">Sign in</a>
 				</Field.Description>
 			</div>
-			<Field.Field>
-				<Field.Label for="email">Email</Field.Label>
-				<Input id="email" type="email" placeholder="m@example.com" required />
-			</Field.Field>
+			<div class="flex-col items-center justify-between space-y-2">
+				<div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+					<Field.Field>
+						<Field.Label for="email">Full name</Field.Label>
+						<Input
+							id="full-name"
+							bind:value={fullName}
+							type="text"
+							placeholder="John Doe"
+							required
+						/>
+					</Field.Field>
+					<Field.Field>
+						<Field.Label for="email">Email</Field.Label>
+						<Input
+							id="email"
+							type="email"
+							bind:value={email}
+							placeholder="m@example.com"
+							required
+						/>
+					</Field.Field>
+				</div>
+				<div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+					<Field.Field>
+						<Field.Label for="password">Password</Field.Label>
+						<Input
+							id="password"
+							type="password"
+							bind:value={password}
+							placeholder="Enter your password here"
+							required
+						/>
+					</Field.Field>
+					<Field.Field>
+						<Field.Label for="confirm-password">Confirm password</Field.Label>
+						<Input
+							id="confirm-password"
+							type="password"
+							placeholder="Enter your password again"
+							bind:value={confirmPassword}
+							required
+						/>
+					</Field.Field>
+				</div>
+			</div>
 			<Field.Field>
 				<Button type="submit">Create Account</Button>
 			</Field.Field>
 			<Field.Separator>Or</Field.Separator>
-			<Field.Field class="grid gap-4 sm:grid-cols-2">
-				<Button variant="outline" type="button">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-						<path
-							d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"
-							fill="currentColor"
-						/>
-					</svg>
-					Continue with Apple
-				</Button>
+			<Field.Field class="grid gap-4 ">
 				<Button variant="outline" type="button">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 						<path
@@ -55,7 +113,7 @@
 		</Field.Group>
 	</form>
 	<Field.Description class="px-6 text-center">
-		By clicking continue, you agree to our <a href="#/">Terms of Service</a>
-		and <a href="#/">Privacy Policy</a>.
+		By clicking continue, you agree to our <a href="/terms">Terms of Service</a>
+		and <a href="/privacy">Privacy Policy</a>.
 	</Field.Description>
 </div>

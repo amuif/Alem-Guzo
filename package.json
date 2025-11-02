@@ -52,6 +52,8 @@
 	"dependencies": {
 		"@lucide/svelte": "^0.544.0",
 		"@neondatabase/serverless": "^1.0.1",
+		"@types/bcrypt": "^6.0.0",
+		"bcrypt": "^6.0.0",
 		"husky": "^9.1.7",
 		"mode-watcher": "^1.1.0"
 	}

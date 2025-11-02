@@ -2,7 +2,6 @@
 	import { Facebook, Twitter, Instagram, Github, Mail } from '@lucide/svelte';
 	import { Button } from '../ui/button';
 </script>
-
 <footer
 	class="w-full border-t border-neutral-200 bg-neutral-50 px-6 py-16 text-neutral-800 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-200"
 >
@@ -91,7 +90,6 @@
 		</div>
 	</div>
 
-	<!-- Divider -->
 	<div
 		class="mx-auto mt-12 max-w-6xl border-t border-neutral-200 pt-6 text-center text-sm text-neutral-500 dark:border-neutral-800 dark:text-neutral-400"
 	>
