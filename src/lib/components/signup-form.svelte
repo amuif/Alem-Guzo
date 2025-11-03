@@ -8,6 +8,8 @@
 	import { LoaderCircle } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
 	import type { User } from '../../types/user';
+	import type { ApiResponse } from '../../types/api-response';
+	import Checkbox from './ui/checkbox/checkbox.svelte';
 </script>
 
 <script lang="ts">
@@ -17,6 +19,10 @@
 	let password = $state('');
 	let confirmPassword = $state('');
 	let loading = $state(false);
+	let showPassword = $state(false);
+	let error = $state('');
+	$inspect(showPassword);
+
 	async function handleSignUp(event: Event) {
 		event.preventDefault();
 		loading = true;
@@ -26,11 +32,12 @@
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ fullName, email, password, confirmPassword })
 			});
-			if (!response.ok) {
-				console.log('Error creating user');
-			}
-			const resp: { success: boolean; data: User } = await response.json();
+			const resp: ApiResponse<User> = await response.json();
 			console.log(resp);
+			if (resp.success === false) {
+				toast.error('Error creating user, please try again');
+				error = resp.message;
+			}
 			if (resp.success) {
 				toast.success(`Welcome ${resp.data.name} to Alem Guzo`);
 			}
@@ -39,7 +46,6 @@
 			password = '';
 			confirmPassword = '';
 		} catch (error) {
-			toast.error('Error creating user');
 			console.log('Error at creating user', error);
 		} finally {
 			loading = false;
@@ -72,6 +78,7 @@
 							type="text"
 							placeholder="John Doe"
 							required
+							class={`${error ? 'border-destructive' : ''}`}
 						/>
 					</Field.Field>
 					<Field.Field>
@@ -82,6 +89,7 @@
 							bind:value={email}
 							placeholder="m@example.com"
 							required
+							class={`${error ? 'border-destructive' : ''}`}
 						/>
 					</Field.Field>
 				</div>
@@ -90,23 +98,34 @@
 						<Field.Label for="password">Password</Field.Label>
 						<Input
 							id="password"
-							type="password"
+							type={showPassword ? 'text' : 'password'}
 							bind:value={password}
 							placeholder="Enter your password here"
 							required
+							class={`${error ? 'border-destructive' : ''}`}
 						/>
 					</Field.Field>
 					<Field.Field>
 						<Field.Label for="confirm-password">Confirm password</Field.Label>
 						<Input
 							id="confirm-password"
-							type="password"
+							type={showPassword ? 'text' : 'password'}
 							placeholder="Enter your password again"
 							bind:value={confirmPassword}
 							required
+							class={`${error ? 'border-destructive' : ''}`}
 						/>
 					</Field.Field>
 				</div>
+			</div>
+			<div class="flex items-center gap-2">
+				<Checkbox
+					checked={showPassword}
+					onclick={() => {
+						showPassword = !showPassword;
+					}}
+				/>
+				<span>Show password</span>
 			</div>
 			<Field.Field>
 				<Button type="submit" disabled={loading}>

@@ -11,9 +11,10 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { cn, type WithElementRef } from '$lib/utils.js';
-	import { LoaderCircle } from '@lucide/svelte';
-	import type { User } from '../../types/user';
+	import { Eye, EyeClosed, LoaderCircle } from '@lucide/svelte';
+	import type { ApiResponse } from '../../types/api-response';
 	import { toast } from 'svelte-sonner';
+	import type { User } from '../../types/user';
 </script>
 
 <script>
@@ -26,7 +27,9 @@
 
 	let email = $state('');
 	let password = $state('');
+	let showPassword = $state(false);
 	let loading = $state(false);
+	let error = $state('');
 
 	async function handleSignin(event: Event) {
 		event.preventDefault();
@@ -37,19 +40,20 @@
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ email, password })
 			});
-			if (!response.ok) {
-				console.log('Error creating user');
-			}
-			const resp: { success: boolean; data: User } = await response.json();
+
+			const resp: ApiResponse<User> = await response.json();
 			console.log(resp);
 			if (resp.success) {
 				toast.success(`Welcome ${resp.data.name} to Alem Guzo`);
 			}
+			if (resp.success === false) {
+				toast.error('Error creating user, please try again');
+				error = resp.message;
+			}
 			email = '';
 			password = '';
-		} catch (error) {
-			toast.error('Error creating user');
-			console.log('Error at creating user', error);
+		} catch (err) {
+			console.log('Error at creating user', err);
 		} finally {
 			loading = false;
 		}
@@ -79,19 +83,32 @@
 					placeholder="m@example.com"
 					bind:value={email}
 					required
+					class={`${error ? 'border-destructive' : ''}`}
 				/>
 			</Field>
 			<Field>
 				<FieldLabel for="password-{id}">Password</FieldLabel>
-				<Input
-					id="password-{id}"
-					type="password"
-					placeholder="Enter your password here"
-					bind:value={password}
-					required
-				/>
+				<div class="flex space-x-1">
+					<Input
+						id="password-{id}"
+						type={showPassword ? 'text' : 'password'}
+						placeholder="Enter your password here"
+						bind:value={password}
+						required
+						class={`${error ? 'border-destructive' : ''}`}
+					/>
+					<Button variant="outline" onclick={() => (showPassword = !showPassword)}>
+						{#if !showPassword}
+							<Eye />
+						{/if}
+						{#if showPassword}
+							<EyeClosed />
+						{/if}
+					</Button>
+				</div>
 			</Field>
 			<Field>
+				<span class="text-sm text-destructive">{error}</span>
 				<Button type="submit" disabled={loading}>
 					{#if loading}
 						<p class="flex items-center gap-2">
