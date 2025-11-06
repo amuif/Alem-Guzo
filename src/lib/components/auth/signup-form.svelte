@@ -7,9 +7,9 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { LoaderCircle } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
-	import type { User } from '../../types/user';
-	import type { ApiResponse } from '../../types/api-response';
-	import Checkbox from './ui/checkbox/checkbox.svelte';
+	import type { ApiResponse } from '../../../types/api-response';
+	import type { User } from '../../../types/user';
+	import { Checkbox } from '../ui/checkbox';
 </script>
 
 <script lang="ts">
@@ -21,7 +21,6 @@
 	let loading = $state(false);
 	let showPassword = $state(false);
 	let error = $state('');
-	$inspect(showPassword);
 
 	async function handleSignUp(event: Event) {
 		event.preventDefault();
@@ -119,12 +118,7 @@
 				</div>
 			</div>
 			<div class="flex items-center gap-2">
-				<Checkbox
-					checked={showPassword}
-					onclick={() => {
-						showPassword = !showPassword;
-					}}
-				/>
+				<Checkbox bind:checked={showPassword} />
 				<span>Show password</span>
 			</div>
 			<Field.Field>
