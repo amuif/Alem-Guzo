@@ -6,10 +6,10 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { LoaderCircle } from '@lucide/svelte';
-	import { toast } from 'svelte-sonner';
-	import type { ApiResponse } from '../../../types/api-response';
-	import type { User } from '../../../types/user';
 	import { Checkbox } from '../ui/checkbox';
+	import { authClient } from '$lib/auth-client';
+
+	export let form: FormDataEvent;
 </script>
 
 <script lang="ts">
@@ -22,38 +22,18 @@
 	let showPassword = $state(false);
 	let error = $state('');
 
-	async function handleSignUp(event: Event) {
-		event.preventDefault();
-		loading = true;
-		try {
-			const response = await fetch('/api/signup', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ fullName, email, password, confirmPassword })
-			});
-			const resp: ApiResponse<User> = await response.json();
-			console.log(resp);
-			if (resp.success === false) {
-				toast.error('Error creating user, please try again');
-				error = resp.message;
-			}
-			if (resp.success) {
-				toast.success(`Welcome ${resp.data.name} to Alem Guzo`);
-			}
-			fullName = '';
-			email = '';
-			password = '';
-			confirmPassword = '';
-		} catch (error) {
-			console.log('Error at creating user', error);
-		} finally {
-			loading = false;
-		}
+	async function handleSubmit() {
+		const response = await authClient.signUp.email({
+			name: fullName,
+			email: email,
+			password: password
+		});
+		console.log(response);
 	}
 </script>
 
 <div class={cn('flex flex-col gap-6', className)} {...restProps}>
-	<form onsubmit={handleSignUp}>
+	<form onsubmit={handleSubmit}>
 		<Field.Group>
 			<div class="flex flex-col items-center gap-2 text-center">
 				<a href="/" class="flex flex-col items-center gap-2 font-medium">

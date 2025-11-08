@@ -12,9 +12,9 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { cn, type WithElementRef } from '$lib/utils.js';
 	import { Eye, EyeClosed, LoaderCircle } from '@lucide/svelte';
-	import type { ApiResponse } from '../../types/api-response';
 	import { toast } from 'svelte-sonner';
-	import type { User } from '../../types/user';
+	import type { ApiResponse } from '../../../types/api-response';
+	import type { User } from '../../../types/user';
 </script>
 
 <script>
