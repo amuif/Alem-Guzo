@@ -13,8 +13,8 @@ export const auth = betterAuth({
 	},
 	socialProviders: {
 		google: {
-			clientId: process.env.GOOGLE_CLIENT_ID as string,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+			clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID as string,
+			clientSecret: import.meta.env.VITE_GOOGLE_CLIENT_SECRET as string
 		}
 	},
 	plugins: [sveltekitCookies(getRequestEvent)]
