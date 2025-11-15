@@ -4,6 +4,4 @@
 	console.log(session);
 </script>
 
-{#if $session.data}
-	<p>{$session.data.user.name}</p>
-{/if}
+<section class="m-auto text-center">home page</section>

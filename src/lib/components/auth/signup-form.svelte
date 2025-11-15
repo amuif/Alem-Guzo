@@ -44,14 +44,8 @@
 	async function handleGoogleSignup() {
 		loading = true;
 		try {
-			const { data, error } = await authClient.signIn.social({ provider: 'google' });
-
-			if (data) {
-				toast.success(`Hello, to Alem Guzo`);
-			}
-			if (error) {
-				toast.error(`Error, ${error.message}`);
-			}
+			 await authClient.signIn.social({ provider: 'google',callbackURL:'/dashboard' });
+			
 		} catch (error) {
 			console.log('Errror occured when signing up with google, ', error);
 		} finally {
