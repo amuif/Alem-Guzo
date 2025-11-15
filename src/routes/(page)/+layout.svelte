@@ -22,6 +22,6 @@
 				<Breadcrumb.List><ModeToggle /></Breadcrumb.List>
 			</Breadcrumb.Root>
 		</header>
-<slot/>
+		<slot />
 	</Sidebar.Inset>
 </Sidebar.Provider>

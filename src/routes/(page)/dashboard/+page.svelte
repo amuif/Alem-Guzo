@@ -1,4 +1,3 @@
 <script></script>
-<section>
-  dashboard
-</section>
+
+<section>dashboard</section>
