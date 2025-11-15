@@ -1,0 +1,74 @@
+<script lang="ts" module>
+	const data = {
+		navMain: [
+			{
+				title: 'Dashboard',
+				icon: LayoutDashboard,
+				url: '/dashboard'
+			},
+			{
+				title: 'Library',
+				icon: BookOpen,
+				url: '/library'
+			},
+			{
+				title: 'Collection',
+				icon: BookCopy,
+				url: '/collection'
+			},
+			{
+				title: 'Author',
+				icon: User,
+				url: '/author'
+			},
+			{
+				title: 'Reviews',
+				icon: Star,
+				url: '/reviews'
+			},
+			{
+				title: 'Settings',
+				icon: Settings,
+				url: '/settings'
+			}
+		]
+	};
+</script>
+
+<script lang="ts">
+	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import { BookCopy, BookOpen, LayoutDashboard, Settings, Star, User } from '@lucide/svelte';
+	import type { ComponentProps } from 'svelte';
+	import NavUser from './nav-user.svelte';
+	import { page } from '$app/state';
+	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
+</script>
+
+<Sidebar.Root {...restProps} bind:ref>
+	<Sidebar.Content>
+		<Sidebar.Group>
+			<Sidebar.Header class="text-center text-xl font-extrabold">Alem Guzo</Sidebar.Header>
+			<Sidebar.GroupContent class="py-3">
+				<Sidebar.Menu class="mx-auto flex-col space-y-1 text-xl font-bold">
+					{#each data.navMain as nav (nav.title)}
+						<Sidebar.MenuItem>
+							<Sidebar.MenuButton
+								class={`${page.url.pathname === nav.url ? '!bg-primary !text-black' : ''}`}
+								size="lg"
+							>
+								{#snippet child({ props })}
+									<a href={nav.url} {...props}>
+										<nav.icon /> <span>{nav.title}</span>
+									</a>
+								{/snippet}
+							</Sidebar.MenuButton>
+						</Sidebar.MenuItem>
+					{/each}
+				</Sidebar.Menu>
+			</Sidebar.GroupContent>
+		</Sidebar.Group>
+	</Sidebar.Content>
+	<Sidebar.Footer><NavUser /></Sidebar.Footer>
+
+	<Sidebar.Rail />
+</Sidebar.Root>

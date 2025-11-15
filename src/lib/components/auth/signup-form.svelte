@@ -44,8 +44,7 @@
 	async function handleGoogleSignup() {
 		loading = true;
 		try {
-			 await authClient.signIn.social({ provider: 'google',callbackURL:'/dashboard' });
-			
+			await authClient.signIn.social({ provider: 'google', callbackURL: '/dashboard' });
 		} catch (error) {
 			console.log('Errror occured when signing up with google, ', error);
 		} finally {

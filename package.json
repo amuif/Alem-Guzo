@@ -53,6 +53,7 @@
 	"dependencies": {
 		"@lucide/svelte": "^0.544.0",
 		"@neondatabase/serverless": "^1.0.1",
+		"@tabler/icons-svelte": "^3.35.0",
 		"@types/bcrypt": "^6.0.0",
 		"bcrypt": "^6.0.0",
 		"better-auth": "^1.3.34",
