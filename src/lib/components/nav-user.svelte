@@ -1,12 +1,5 @@
 <script lang="ts" module>
-	const user = {
-		name: 'user',
-		email: 'user@gmail.com',
-		avatar: ''
-	};
-</script>
-
-<script lang="ts">
+	import { authClient } from '$lib/auth-client';
 	import CreditCardIcon from '@tabler/icons-svelte/icons/credit-card';
 	import DotsVerticalIcon from '@tabler/icons-svelte/icons/dots-vertical';
 	import LogoutIcon from '@tabler/icons-svelte/icons/logout';
@@ -15,7 +8,16 @@
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import { goto } from '$app/navigation';
+</script>
+
+<script lang="ts">
 	const sidebar = Sidebar.useSidebar();
+	let { user } = $props();
+	function handleLogOut() {
+		authClient.signOut();
+		goto('/login');
+	}
 </script>
 
 <Sidebar.Menu>
@@ -29,13 +31,13 @@
 						class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
 					>
 						<Avatar.Root class="size-8 rounded-lg grayscale">
-							<Avatar.Image src={user.avatar} alt={user.name} />
+							<Avatar.Image src={user?.image} alt={user?.name} class="grayscale" />
 							<Avatar.Fallback class="rounded-lg">CN</Avatar.Fallback>
 						</Avatar.Root>
 						<div class="grid flex-1 text-left text-sm leading-tight">
-							<span class="truncate font-medium">{user.name}</span>
+							<span class="truncate font-medium">{user?.name}</span>
 							<span class="truncate text-xs text-muted-foreground">
-								{user.email}
+								{user?.email}
 							</span>
 						</div>
 						<DotsVerticalIcon class="ml-auto size-4" />
@@ -51,13 +53,13 @@
 				<DropdownMenu.Label class="p-0 font-normal">
 					<div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
 						<Avatar.Root class="size-8 rounded-lg">
-							<Avatar.Image src={user.avatar} alt={user.name} />
-							<Avatar.Fallback class="rounded-lg">CN</Avatar.Fallback>
+							<Avatar.Image src={user?.image} alt={user?.name} class="grayscale" />
+							<Avatar.Fallback class="rounded-lg">{user?.name.at(0)}</Avatar.Fallback>
 						</Avatar.Root>
 						<div class="grid flex-1 text-left text-sm leading-tight">
-							<span class="truncate font-medium">{user.name}</span>
+							<span class="truncate font-medium">{user?.name}</span>
 							<span class="truncate text-xs text-muted-foreground">
-								{user.email}
+								{user?.email}
 							</span>
 						</div>
 					</div>
@@ -78,7 +80,7 @@
 					</DropdownMenu.Item>
 				</DropdownMenu.Group>
 				<DropdownMenu.Separator />
-				<DropdownMenu.Item>
+				<DropdownMenu.Item onclick={handleLogOut}>
 					<LogoutIcon />
 					Log out
 				</DropdownMenu.Item>

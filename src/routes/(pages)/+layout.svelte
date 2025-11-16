@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" module>
 	import AppSidebar from '$lib/components/app-sidebar.svelte';
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
@@ -7,8 +7,14 @@
 	import ModeToggle from '$lib/components/mode-toggle.svelte';
 </script>
 
+<script lang="ts">
+	export let data;
+	const { session } = data;
+	const user = session.user.user;
+</script>
+
 <Sidebar.Provider>
-	<AppSidebar />
+	<AppSidebar {user} />
 	<Sidebar.Inset>
 		<header class="flex h-16 shrink-0 items-center gap-2 border-b px-4">
 			<Sidebar.Trigger class="-ml-1" />

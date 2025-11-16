@@ -18,7 +18,7 @@
 			},
 			{
 				title: 'Author',
-				icon: User,
+				icon: UserIcon,
 				url: '/author'
 			},
 			{
@@ -37,11 +37,23 @@
 
 <script lang="ts">
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import { BookCopy, BookOpen, LayoutDashboard, Settings, Star, User } from '@lucide/svelte';
+	import {
+		BookCopy,
+		BookOpen,
+		LayoutDashboard,
+		Settings,
+		Star,
+		User as UserIcon
+	} from '@lucide/svelte';
 	import type { ComponentProps } from 'svelte';
 	import NavUser from './nav-user.svelte';
 	import { page } from '$app/state';
-	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
+	import type { User } from '../../types/user';
+	let {
+		ref = $bindable(null),
+		user,
+		...restProps
+	}: ComponentProps<typeof Sidebar.Root> & { user: User } = $props();
 </script>
 
 <Sidebar.Root {...restProps} bind:ref>
@@ -68,7 +80,6 @@
 			</Sidebar.GroupContent>
 		</Sidebar.Group>
 	</Sidebar.Content>
-	<Sidebar.Footer><NavUser /></Sidebar.Footer>
-
+	<Sidebar.Footer><NavUser {user} /></Sidebar.Footer>
 	<Sidebar.Rail />
 </Sidebar.Root>

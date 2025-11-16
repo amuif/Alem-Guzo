@@ -16,5 +16,3 @@
 <Contact />
 <Footer />
 
-<style>
-</style>

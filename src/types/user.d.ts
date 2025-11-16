@@ -1,9 +1,9 @@
 export interface User {
 	name: string;
-	profilePicture: string;
+	image?: string | null | undefined;
 	email: string;
 	emailVerified: boolean;
-	role: string;
-	createdAt: string;
-	updatedAt: string;
+	// role: string;
+	createdAt: Date;
+	updatedAt: Date;
 }
