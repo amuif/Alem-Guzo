@@ -5,12 +5,17 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import { page } from '$app/state';
 	import ModeToggle from '$lib/components/mode-toggle.svelte';
+	import { goto } from '$app/navigation';
 </script>
 
 <script lang="ts">
 	export let data;
-	const { session } = data;
-	const user = session.user.user;
+	const { session, cookieToken } = data;
+	console.log(cookieToken);
+	if (!session || !cookieToken) {
+		goto('/login');
+	}
+	const user = session.user;
 </script>
 
 <Sidebar.Provider>

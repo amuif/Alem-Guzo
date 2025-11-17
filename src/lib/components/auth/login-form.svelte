@@ -116,11 +116,11 @@
 				<Button type="submit" disabled={loading}>
 					{#if loading}
 						<p class="flex items-center gap-2">
-							Signing...
+							Loading...
 							<LoaderCircle class="animate-spin" />
 						</p>
 					{:else}
-						<span>Create Account</span>
+						<span>Continue</span>
 					{/if}
 				</Button>
 			</Field>
