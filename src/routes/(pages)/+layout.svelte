@@ -11,7 +11,6 @@
 <script lang="ts">
 	export let data;
 	const { session, cookieToken } = data;
-	console.log(cookieToken);
 	if (!session || !cookieToken) {
 		goto('/login');
 	}

@@ -1,3 +1,7 @@
-<script></script>
+<script>
+	import Parent from '$lib/components/dashboard/parent.svelte';
+</script>
 
-<section>dashboard</section>
+<section>
+	<Parent />
+</section>

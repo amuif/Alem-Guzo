@@ -8,6 +8,7 @@ export const load: LayoutServerLoad = async ({ request, cookies }) => {
 		headers: request.headers
 	});
 	if (!session) {
+		console.log('There is no session ');
 		throw redirect(302, '/login');
 	}
 	return { session, cookieToken };
