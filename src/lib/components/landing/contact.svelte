@@ -12,12 +12,12 @@
 
 		<div class="relative z-10 flex flex-col items-center space-y-6 px-6 py-16 text-center lg:py-24">
 			<h3 class="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-				Let’s build something great together.
+				Discover, Save, and Access Your Books Anytime
 			</h3>
 
 			<p class="max-w-2xl text-sm text-neutral-400 dark:text-neutral-600">
-				Collaborate with us to bring your ideas to life. We focus on clean design, strong code, and
-				timeless simplicity.
+				Build your personal digital library. Organize your favorite titles, keep your collection
+				safe, and access your books from any device—whenever you need them.
 			</p>
 
 			<Button
