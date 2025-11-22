@@ -41,7 +41,7 @@
 			});
 			if (data?.user) {
 				toast.success(`Hello, ${data.user.name} to Alem Guzo`);
-        goto('/dashboard')
+				goto('/dashboard');
 			}
 			if (error) {
 				toast.error(`Error, ${error.message}`);
