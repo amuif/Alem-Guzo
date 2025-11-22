@@ -9,6 +9,7 @@
 	import { Checkbox } from '../ui/checkbox';
 	import { authClient } from '$lib/auth-client';
 	import { toast } from 'svelte-sonner';
+	import { goto } from '$app/navigation';
 </script>
 
 <script lang="ts">
@@ -31,6 +32,7 @@
 			});
 			if (data?.user) {
 				toast.success(`Hello, ${data.user.name} to Alem Guzo`);
+				goto('/dashboard');
 			}
 			if (error) {
 				toast.error(`Error, ${error.message}`);
@@ -93,29 +95,36 @@
 						/>
 					</Field.Field>
 				</div>
-				<div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-					<Field.Field>
-						<Field.Label for="password">Password</Field.Label>
-						<Input
-							id="password"
-							type={showPassword ? 'text' : 'password'}
-							bind:value={password}
-							placeholder="Enter your password here"
-							required
-							class={`${error ? 'border-destructive' : ''}`}
-						/>
-					</Field.Field>
-					<Field.Field>
-						<Field.Label for="confirm-password">Confirm password</Field.Label>
-						<Input
-							id="confirm-password"
-							type={showPassword ? 'text' : 'password'}
-							placeholder="Enter your password again"
-							bind:value={confirmPassword}
-							required
-							class={`${error ? 'border-destructive' : ''}`}
-						/>
-					</Field.Field>
+				<div class="grid grid-cols-1 gap-2">
+					<div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+						<Field.Field>
+							<Field.Label for="password">Password</Field.Label>
+							<Input
+								id="password"
+								type={showPassword ? 'text' : 'password'}
+								bind:value={password}
+								placeholder="Enter your password here"
+								required
+								class={`${error ? 'border-destructive' : ''}`}
+							/>
+						</Field.Field>
+						<Field.Field>
+							<Field.Label for="confirm-password">Confirm password</Field.Label>
+							<Input
+								id="confirm-password"
+								type={showPassword ? 'text' : 'password'}
+								placeholder="Enter your password again"
+								bind:value={confirmPassword}
+								required
+								class={`${error ? 'border-destructive' : ''}`}
+							/>
+						</Field.Field>
+					</div>
+					{#if password.trim() !== confirmPassword.trim()}
+						<small class="text-xs text-destructive">Passwords doesn't not mach</small>
+					{:else if password.length !== 0 && password.trim() === confirmPassword.trim()}
+						<small class="text-xs text-green-500">Passwords does not mach</small>
+					{:else}{/if}
 				</div>
 			</div>
 			<div class="flex items-center gap-2">
@@ -123,7 +132,7 @@
 				<span>Show password</span>
 			</div>
 			<Field.Field>
-				<Button type="submit" disabled={loading}>
+				<Button type="submit" disabled={loading || confirmPassword.trim() !== password.trim()}>
 					{#if loading}
 						<p class="flex items-center gap-2">
 							Signing...

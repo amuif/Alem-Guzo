@@ -14,6 +14,7 @@
 	import { Eye, EyeClosed, LoaderCircle } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
 	import { authClient } from '$lib/auth-client';
+	import { goto } from '$app/navigation';
 </script>
 
 <script>
@@ -40,6 +41,7 @@
 			});
 			if (data?.user) {
 				toast.success(`Hello, ${data.user.name} to Alem Guzo`);
+        goto('/dashboard')
 			}
 			if (error) {
 				toast.error(`Error, ${error.message}`);
