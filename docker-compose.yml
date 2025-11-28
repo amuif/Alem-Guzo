@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:17
-    container_name: AlemGuzoContainer 
+    container_name: AlemGuzoContainer
     env_file:
       - .env
     ports:

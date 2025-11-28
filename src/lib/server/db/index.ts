@@ -5,17 +5,16 @@ import * as schema from './schema';
 import { env } from '$env/dynamic/private';
 import { Pool } from 'pg';
 
-let db
+let db;
 if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
 
 if (process.env.NODE_ENV === 'production') {
-  const client = neon(env.DATABASE_URL);
-  db = neonDrizzle(client, { schema });
+	const client = neon(env.DATABASE_URL);
+	db = neonDrizzle(client, { schema });
 } else {
-    const pool = new Pool({
-    connectionString: env.DATABASE_URL,
-  });
-  db = drizzle(pool, { schema });
+	const pool = new Pool({
+		connectionString: env.DATABASE_URL
+	});
+	db = drizzle(pool, { schema });
 }
-export const dbExport = db
-
+export const dbExport = db;

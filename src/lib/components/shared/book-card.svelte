@@ -3,12 +3,16 @@
 	import { Button } from '../ui/button';
 	import type { ItemsInfo } from '../../../types/trending-google-books';
 
-	let { book}: { book: ItemsInfo; } = $props();
+	let { book }: { book: ItemsInfo } = $props();
 </script>
 
 <Card.Root class="flex  flex-col gap-4 rounded-xl border  p-4 shadow-sm">
 	<div class="flex h-48 w-full items-center justify-center overflow-hidden rounded-lg">
-		<enhanced:img src={book.volumeInfo.imageLinks?.smallThumbnail || ''} alt={book.volumeInfo.title} class="h-full w-full rounded-md object-contain" />
+		<enhanced:img
+			src={book.volumeInfo.imageLinks?.smallThumbnail || ''}
+			alt={book.volumeInfo.title}
+			class="h-full w-full rounded-md object-contain"
+		/>
 	</div>
 
 	<div class="flex flex-col gap-1">

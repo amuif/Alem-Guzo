@@ -30,3 +30,16 @@ export interface VolumeInfo {
   };
 }
 
+export interface AccessInfo {
+  country: string;
+  viewability: string;
+  embeddable: boolean;
+  publicDomain: boolean;
+  webReaderLink?: string;
+}
+
+export interface SaleInfo {
+  country: string;
+  saleability: string;
+  isEbook: boolean;
+}

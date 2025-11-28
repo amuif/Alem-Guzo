@@ -15,7 +15,7 @@
 	<h4 class="py-3 font-bold">Popular Books</h4>
 	<div class="grid grid-cols-1 gap-3 md:grid-cols-3 lg:grid-cols-4">
 		{#each books as book (book.id)}
-			<BookCard {book}  />
+			<BookCard {book} />
 		{/each}
 	</div>
 </section>
