@@ -10,14 +10,14 @@
 	});
 </script>
 
-<section class="relative !text-white h-full w-full">
+<section class="relative h-full w-full !text-white">
 	<enhanced:img
 		src={featureBg}
 		alt="feeature card"
 		class="absolute inset-0 h-full w-full rounded-lg object-cover brightness-50"
 	/>
-	<div class="relative  flex-col gap-4 p-5">
-		<h4 class="text-lg font-bold lg:text-2xl">Trending Book </h4>
+	<div class="relative flex-col gap-4 p-5">
+		<h4 class="text-lg font-bold lg:text-2xl">Trending Book</h4>
 		<div class="flex items-center justify-between">
 			<div class=" w-2/3 flex-col gap-4">
 				<h3 class="line-clamp-2 text-2xl font-bold">{book?.volumeInfo?.title}</h3>
