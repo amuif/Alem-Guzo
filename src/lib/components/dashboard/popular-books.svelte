@@ -7,7 +7,6 @@
 	onMount(async () => {
 		const res = await fetch('/api/reviewed');
 		books = (await res.json()).items?.slice(0, 8);
-		console.log(books);
 	});
 </script>
 
