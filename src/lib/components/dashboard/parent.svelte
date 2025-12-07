@@ -1,6 +1,6 @@
 <script>
+	import PopularBooks from '../shared/popular-books.svelte';
 	import FeatureCard from './feature-card.svelte';
-	import PopularBooks from './popular-books.svelte';
 </script>
 
 <section class="flex min-h-screen w-full flex-col">
@@ -9,6 +9,6 @@
 	</div>
 
 	<div class="">
-		<PopularBooks />
+		<PopularBooks amount="8" />
 	</div>
 </section>

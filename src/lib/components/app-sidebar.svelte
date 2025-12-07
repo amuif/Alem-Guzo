@@ -17,19 +17,9 @@
 				url: '/collection'
 			},
 			{
-				title: 'Author',
-				icon: UserIcon,
-				url: '/author'
-			},
-			{
 				title: 'Reviews',
 				icon: Star,
 				url: '/reviews'
-			},
-			{
-				title: 'Settings',
-				icon: Settings,
-				url: '/settings'
 			}
 		]
 	};
@@ -41,9 +31,7 @@
 		BookCopy,
 		BookOpen,
 		LayoutDashboard,
-		Settings,
 		Star,
-		User as UserIcon
 	} from '@lucide/svelte';
 	import type { ComponentProps } from 'svelte';
 	import NavUser from './nav-user.svelte';

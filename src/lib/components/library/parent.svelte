@@ -1,6 +1,9 @@
-<script lang='ts'>
-	import Header from "./header.svelte";
+<script lang="ts">
+	import PopularBooks from '../shared/popular-books.svelte';
+	import Header from './header.svelte';
 </script>
-<section class='p-2 w-full'>
-  <Header/>
+
+<section class="w-full p-2">
+	<Header />
+	<PopularBooks amount="100" />
 </section>
