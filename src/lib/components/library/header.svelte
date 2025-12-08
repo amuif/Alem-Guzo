@@ -3,7 +3,7 @@
 	import { Input } from '../ui/input';
 	import { IconLayout2, IconList } from '@tabler/icons-svelte';
 	import * as ButtonGroup from '$lib/components/ui/button-group/index';
-	import { layoutState, } from '$lib/store/layout-state';
+	import { layoutState } from '$lib/store/layout-state';
 	import { selectedCatagory, selectCatagory } from '$lib/store/catagory-state';
 	import { catagories } from '$lib/data/catagories';
 </script>
@@ -22,11 +22,11 @@
 			<ButtonGroup.Root>
 				<Button
 					variant={`${$layoutState === 'GRID' ? 'default' : 'outline'}`}
-					onclick={()=>layoutState.set('GRID')}><IconLayout2 /></Button
+					onclick={() => layoutState.set('GRID')}><IconLayout2 /></Button
 				>
 				<Button
 					variant={`${$layoutState === 'LIST' ? 'default' : 'outline'}`}
-					onclick={()=>layoutState.set('LIST')}><IconList /></Button
+					onclick={() => layoutState.set('LIST')}><IconList /></Button
 				>
 			</ButtonGroup.Root>
 		</div>

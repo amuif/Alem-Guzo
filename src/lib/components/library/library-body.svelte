@@ -25,13 +25,13 @@
 		class={` gap-3 ${$layoutState === 'GRID' ? 'grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4' : 'flex-col space-y-2.5'}`}
 	>
 		{#each books?.filter((book) => {
-        if (!$selectedCatagory || $selectedCatagory === 'all') return true;
-        if (!book?.volumeInfo?.categories) return false;
-        
-        return book.volumeInfo.categories.some((category: string) => 
-          category.toLowerCase().includes($selectedCatagory.toLowerCase())
-        );
-	}) as book, index (index)}
+			if (!$selectedCatagory || $selectedCatagory === 'all') return true;
+			if (!book?.volumeInfo?.categories) return false;
+
+			return book.volumeInfo.categories.some((category: string) => category
+					.toLowerCase()
+					.includes($selectedCatagory.toLowerCase()));
+		}) as book, index (index)}
 			<BookCard {book} />
 		{/each}
 	</div>
