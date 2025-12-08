@@ -9,6 +9,6 @@
 	</div>
 
 	<div class="">
-		<PopularBooks amount="8" />
+		<PopularBooks />
 	</div>
 </section>

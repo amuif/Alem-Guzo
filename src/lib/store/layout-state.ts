@@ -7,4 +7,3 @@ export const layoutState = writable<Layout>('GRID');
 export function toggleLayout() {
 	layoutState.update((v) => (v === 'GRID' ? 'LIST' : 'GRID'));
 }
-

@@ -1,6 +1,7 @@
 export const catagories = [
   'all',
   'fiction',
+  'drama',
   'fantasy',
   'romance',
   'thriller',
@@ -9,6 +10,5 @@ export const catagories = [
   'short stories',
   'science fiction',
   'historical fiction',
-  'literary fiction',
-]
-
+  'literary fiction'
+];

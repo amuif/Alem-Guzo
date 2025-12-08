@@ -1,9 +1,9 @@
 <script lang="ts">
-	import PopularBooks from '../shared/popular-books.svelte';
 	import Header from './header.svelte';
+	import LibraryBody from './library-body.svelte';
 </script>
 
-<section class="w-full p-2">
+<section class="w-full gap-3 space-y-3 p-5">
 	<Header />
-	<PopularBooks amount="100" />
+	<LibraryBody />
 </section>
