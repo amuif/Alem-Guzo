@@ -23,7 +23,7 @@
 	</div>
 
 	<div class="flex items-center gap-3">
-			<p class="line-clamp-1 text-sm font-medium opacity-80">{book.authors[0].name}</p>
+		<p class="line-clamp-1 text-sm font-medium opacity-80">{book.authors[0].name}</p>
 	</div>
 
 	<Button class="w-full rounded-lg py-2 text-sm font-medium">Add to collection</Button>

@@ -6,10 +6,14 @@
 	import { layoutState } from '$lib/store/layout-state';
 	import { selectedCatagory, selectCatagory } from '$lib/store/catagory-state';
 	import { catagories } from '$lib/data/catagories';
+	import { goto } from '$app/navigation';
 </script>
 
 <script lang="ts">
 	let searchQuery: string = $state('');
+	function goTo(pageNum: number) {
+		goto(`?page=${pageNum}`, { keepFocus: true, noScroll: true });
+	}
 </script>
 
 <section class="w-full pt-2">
@@ -35,7 +39,10 @@
 		{#each catagories as catagory (catagory)}
 			<Button
 				variant={$selectedCatagory === catagory ? 'default' : 'outline'}
-				onclick={() => selectCatagory(catagory)}
+				onclick={() => {
+					selectCatagory(catagory);
+					goTo(1);
+				}}
 				class="capitalize">{catagory}</Button
 			>
 		{/each}

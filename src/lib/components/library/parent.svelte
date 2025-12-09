@@ -3,7 +3,7 @@
 	import LibraryBody from './library-body.svelte';
 </script>
 
-<section class="w-full gap-3 space-y-3 p-5">
+<section class="w-full gap-3 space-y-3 p-5 pb-7 md:pb-10">
 	<Header />
 	<LibraryBody />
 </section>
