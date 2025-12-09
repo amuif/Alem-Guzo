@@ -28,7 +28,7 @@
 </script>
 
 <Pagination.Root {count} {perPage} page={current}>
-	{#snippet children({ pages})}
+	{#snippet children({ pages })}
 		<Pagination.Content>
 			<Pagination.Item>
 				<Button size="default" variant="ghost" onclick={handlePrev} disabled={current === 1}>
@@ -54,7 +54,12 @@
 			{/each}
 
 			<Pagination.Item>
-				<Button size="default" variant="ghost" onclick={handleNext} disabled={current === totalPages}>
+				<Button
+					size="default"
+					variant="ghost"
+					onclick={handleNext}
+					disabled={current === totalPages}
+				>
 					Next
 					<ChevronRightIcon class="size-4" />
 				</Button>

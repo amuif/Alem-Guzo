@@ -14,13 +14,16 @@
 	function goTo(pageNum: number) {
 		goto(`?page=${pageNum}`, { keepFocus: true, noScroll: true });
 	}
+	function handleSearch() {
+		goto(`?page=1&search=${searchQuery}`, { keepFocus: true, noScroll: true });
+	}
 </script>
 
 <section class="w-full pt-2">
 	<div class="flex items-center justify-between gap-2">
 		<div class="mx-auto flex h-14 w-full gap-2 md:w-1/2">
 			<Input placeholder="Search for a book" bind:value={searchQuery} class="w-full" />
-			<Button>Search</Button>
+			<Button onclick={handleSearch} disabled={searchQuery.trim().length === 0}>Search</Button>
 		</div>
 		<div class="h-14">
 			<ButtonGroup.Root>
