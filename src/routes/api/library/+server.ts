@@ -7,9 +7,7 @@ export const GET: RequestHandler = async () => {
 	try {
 		await Promise.all(
 			catagories.map(async (category) => {
-				const res = await fetch(
-					`https://openlibrary.org/subjects/${category}.json&details=true`
-				);
+				const res = await fetch(`https://openlibrary.org/subjects/${category}.json?details=true`);
 				const json = await res.json();
 				results.push(...(json.works || []));
 			})
