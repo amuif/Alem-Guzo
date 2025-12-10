@@ -14,9 +14,13 @@
 	function goTo(pageNum: number) {
 		goto(`?page=${pageNum}`, { keepFocus: true, noScroll: true });
 	}
-	function handleSearch() {
+  function handleSearch() {
+	if (searchQuery.trim().length === 0) {
+		goto(`?page=1`, { keepFocus: true, noScroll: true });
+	} else {
 		goto(`?page=1&search=${searchQuery}`, { keepFocus: true, noScroll: true });
 	}
+}
 </script>
 
 <section class="w-full pt-2">

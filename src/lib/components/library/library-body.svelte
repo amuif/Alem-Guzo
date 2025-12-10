@@ -30,6 +30,7 @@
 			loading = false;
 		}
 	}
+
 	onMount(() => fetchBooks());
 	$effect(() => {
 		fetchBooks();

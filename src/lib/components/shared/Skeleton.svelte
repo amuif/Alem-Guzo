@@ -1,7 +1,6 @@
-
 <!-- Skeleton.svelte -->
 <script lang="ts">
-  let { children } = $props()
+	let { children } = $props();
 </script>
 
 <!--
@@ -42,31 +41,31 @@ Example usage:
 <div class="skeleton">{@render children()}</div>
 
 <style>
-  @keyframes skeleton-shimmer {
-    0% {
-      background-position-x: 200%;
-    }
-    100% {
-      background-position-x: 0%;
-    }
-  }
-  .skeleton {
-    --_default-color: #e8e8e8;
-    --_shimmer-color: #fff;
+	@keyframes skeleton-shimmer {
+		0% {
+			background-position-x: 200%;
+		}
+		100% {
+			background-position-x: 0%;
+		}
+	}
+	.skeleton {
+		--_default-color: #e8e8e8;
+		--_shimmer-color: #fff;
 
-    display: contents;
+		display: contents;
 
-    :global(:not(.wrapper)) {
-      animation: skeleton-shimmer 2s ease-out infinite;
-      background: linear-gradient(
-        100deg,
-        var(--_default-color),
-        var(--_default-color) 50%,
-        var(--_shimmer-color) 60%,
-        var(--_default-color) 70%
-      );
-      background-size: 200% 100%;
-      background-attachment: fixed;
-    }
-  }
+		:global(:not(.wrapper)) {
+			animation: skeleton-shimmer 2s ease-out infinite;
+			background: linear-gradient(
+				100deg,
+				var(--_default-color),
+				var(--_default-color) 50%,
+				var(--_shimmer-color) 60%,
+				var(--_default-color) 70%
+			);
+			background-size: 200% 100%;
+			background-attachment: fixed;
+		}
+	}
 </style>

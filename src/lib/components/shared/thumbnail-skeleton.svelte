@@ -1,5 +1,5 @@
 <script>
-  import Skeleton from './Skeleton.svelte'
+	import Skeleton from './Skeleton.svelte';
 </script>
 
 {#snippet thumbnail()}
@@ -18,8 +18,8 @@
 </Skeleton>
 
 <style>
-  .grid {
-    display: grid;
+	.grid {
+		display: grid;
 		gap: 16px;
 		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 
@@ -29,7 +29,7 @@
 			.image {
 				width: 100%;
 				aspect-ratio: 16/9;
-        height: 192px;
+				height: 192px;
 			}
 			.title {
 				height: 8px;
