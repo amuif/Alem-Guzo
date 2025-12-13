@@ -2,8 +2,35 @@
 	import * as Card from '$lib/components/ui/card/index';
 	import { Button } from '../ui/button';
 	import type { ItemsInfo } from '../../../types/trending-google-books';
+	import { errorMessage } from '../../../utils/error-message';
+	import { toast } from 'svelte-sonner';
 
 	let { book }: { book: ItemsInfo } = $props();
+
+	async function handleAddToCollection(book: ItemsInfo) {
+		try {
+			const source = 'google';
+			const response = await fetch('/api/collection', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ source, book })
+			});
+			if (!response.ok) {
+				const error = await response.json();
+				console.log(errorMessage('collection | failed to create'), error);
+				toast.error('failed added to collections');
+			}
+			const state = await response.json();
+			if (state.success) {
+				toast.success('successfully added to collections');
+			}
+		} catch (error) {
+			console.log(errorMessage('collection | failed to create'), error);
+			toast.error('failed added to collections');
+		}
+	}
 </script>
 
 <Card.Root class="flex  flex-col gap-4 rounded-xl border  p-4 shadow-sm">
@@ -25,5 +52,8 @@
 		<p class="line-clamp-1 text-sm font-medium opacity-80">{book.volumeInfo.authors}</p>
 	</div>
 
-	<Button class="w-full rounded-lg py-2 text-sm font-medium">Add to collection</Button>
+	<Button
+		onclick={() => handleAddToCollection(book)}
+		class="w-full rounded-lg py-2 text-sm font-medium">Add to collection</Button
+	>
 </Card.Root>

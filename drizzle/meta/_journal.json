@@ -8,6 +8,27 @@
       "when": 1762596338879,
       "tag": "0000_init",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1765390567002,
+      "tag": "0001_jittery_omega_red",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1765391242885,
+      "tag": "0002_medical_shadow_king",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1765646025742,
+      "tag": "0003_curved_golden_guardian",
+      "breakpoints": true
     }
   ]
 }

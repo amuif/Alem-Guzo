@@ -1,0 +1,1 @@
+ALTER TABLE "collections" ALTER COLUMN "id" SET DATA TYPE uuid;
