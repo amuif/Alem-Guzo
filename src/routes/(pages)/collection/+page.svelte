@@ -1,6 +1,5 @@
 <script>
-	import CollectionParent from "$lib/components/collection/collection-parent.svelte";
-
+	import CollectionParent from '$lib/components/collection/collection-parent.svelte';
 </script>
 
-<section class="p-5 w-screen  min-h-screen"><CollectionParent /></section>
+<section class="min-h-screen w-screen p-5"><CollectionParent /></section>

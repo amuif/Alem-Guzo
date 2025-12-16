@@ -24,7 +24,7 @@
 				console.log('Error at library body', data.status, 'text', data.statusText);
 			}
 			books = await data.json();
-      console.log(books)
+			console.log(books);
 		} catch (error) {
 			console.log('Error at library body', error);
 		} finally {
@@ -52,11 +52,14 @@
 			}`}
 		>
 			{#each books
-				?.filter((book) => {
-					if ($selectedCatagory === 'all') return true;
-					return book.subject?.some((s) => s
-							.toLowerCase()
-							.includes($selectedCatagory.toLowerCase()));
+				.filter((book) => {
+					const matchesCategory = $selectedCatagory === 'all' || book?.subject?.some((s) => s
+								.toLowerCase()
+								.includes($selectedCatagory.toLowerCase()));
+
+					const matchesSearch = !search || book?.title?.toLowerCase().includes(search.toLowerCase());
+
+					return matchesCategory && matchesSearch;
 				})
 				.slice(start, end) as book, index (index)}
 				<OpenBookCard {book} />

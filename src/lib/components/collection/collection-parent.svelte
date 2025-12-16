@@ -27,7 +27,7 @@
 			});
 			if (response.ok) {
 				toast.success('Successfully removed');
-        fetchCollections()
+				fetchCollections();
 			}
 		} catch (err) {
 			console.log(errorMessage('collection | failed to get'), err);
