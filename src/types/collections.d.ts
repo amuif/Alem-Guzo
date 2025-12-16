@@ -1,7 +1,8 @@
-import type { TrendingBook } from "./trending-books";
-import type { ItemsInfo } from "./trending-google-books";
+import type { TrendingBook } from './trending-books';
+import type { ItemsInfo } from './trending-google-books';
 
 export interface CollectionItem {
+  id: number;
   source: string;
   source_id: string;
   title: string;
@@ -9,5 +10,5 @@ export interface CollectionItem {
   thumbnail: string | null;
   categories: string[];
   published_year: string | null;
-  metadata: TrendingBook | ItemsInfo
+  metadata: TrendingBook | ItemsInfo;
 }

@@ -24,6 +24,7 @@
 				console.log('Error at library body', data.status, 'text', data.statusText);
 			}
 			books = await data.json();
+      console.log(books)
 		} catch (error) {
 			console.log('Error at library body', error);
 		} finally {

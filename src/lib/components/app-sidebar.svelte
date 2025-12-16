@@ -22,7 +22,7 @@
 
 <script lang="ts">
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import { BookCopy, BookOpen, LayoutDashboard, } from '@lucide/svelte';
+	import { BookCopy, BookOpen, LayoutDashboard } from '@lucide/svelte';
 	import type { ComponentProps } from 'svelte';
 	import NavUser from './nav-user.svelte';
 	import { page } from '$app/state';
