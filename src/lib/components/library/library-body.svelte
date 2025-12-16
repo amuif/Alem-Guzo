@@ -57,7 +57,9 @@
 								.toLowerCase()
 								.includes($selectedCatagory.toLowerCase()));
 
-					const matchesSearch = !search || book?.title?.toLowerCase().includes(search.toLowerCase());
+					const matchesSearch = !search || book?.title
+							?.toLowerCase()
+							.includes(search.toLowerCase());
 
 					return matchesCategory && matchesSearch;
 				})
